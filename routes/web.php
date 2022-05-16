@@ -37,14 +37,14 @@ Route::group(['middleware' => ['auth']], function () {
     // ログアウト
     Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
     
-    // 利用者一覧、詳細表示
     Route::resource('patients', 'PatientsController');
-    
     // ネスト
     Route::group(['prefix' => 'patients/{id}'], function () {
         // 利用者に対する相談記録
         Route::resource('records', 'RecordsController');
     });
 
+    // 利用者一覧、詳細表示
+    
 });
 

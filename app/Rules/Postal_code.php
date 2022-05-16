@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Rules;
-namespace App\User; // 追加
-use App\Patient; // 追加 
 
 use Illuminate\Contracts\Validation\Rule;
 
@@ -17,16 +15,6 @@ class Postal_code implements Rule
     {
 
     }
-    
-    public function store(Request $request){
-
-        $input = $request->all();
-
-        Validator::make($input, [
-            'postal_code' => ['required',new Postal_code],
-        ])->validate();
-    }
-    
 
     /**
      * Determine if the validation rule passes.
@@ -37,7 +25,7 @@ class Postal_code implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^\d{3}[-]\d{4}$/', $value);
+        return preg_match('/^\d{7}$/', $value);
     }
 
     /**
@@ -47,6 +35,6 @@ class Postal_code implements Rule
      */
     public function message()
     {
-        return '郵便番号の書式に誤りがあります';
+        return trans('validation.postal_code_validation');
     }
 }

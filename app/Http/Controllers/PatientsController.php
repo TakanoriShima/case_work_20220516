@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
+use App\Rules\Postal_code;
 
 class PatientsController extends Controller
 {
@@ -44,6 +45,7 @@ class PatientsController extends Controller
         // 入力された値の検証
         $this->validate($request, [
             'name' => 'required',
+            'postal_code' => ['nullable', new Postal_code],
             'image' => [
                 'file',
                 'mimes:jpeg,jpg,png'
@@ -147,6 +149,7 @@ class PatientsController extends Controller
      */
     public function show(Patient $patient)
     {
+        // dd('show');
         // view の呼び出し
         return view('patients.show', compact('patient'));
     }

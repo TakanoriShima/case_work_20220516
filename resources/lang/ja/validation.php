@@ -116,6 +116,7 @@ return [
     'unique'               => ':attribute は既に存在します',
     'uploaded'             => ':attribute アップロードに失敗しました',
     'url'                  => ':attribute は正しいURL書式のみ有効です',
+     
 
     /*
     |--------------------------------------------------------------------------
@@ -158,6 +159,12 @@ return [
         'name'  => '名前',
         'email'  => 'メールアドレス',
         'password '  => 'パスワード',
+    ],
+    
+    'postal_code_validation' => ':attributeハイフンなしの数字7桁で入力してください。',
+    
+    'attributes' => [
+        'postal_code' => '郵便番号は',
     ],
 
 ];
